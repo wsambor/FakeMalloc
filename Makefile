@@ -1,14 +1,14 @@
 CC=gcc
 TARGET_DIR=build
 OBJECTS_DIR=$(TARGET_DIR)/obj
-LIBS_DIR=$(TARGET_DIR)/libs
+LIBS_DIR=libs
 EXECUTABLE=$(TARGET_DIR)/bin/main
 
 SOURCES=$(wildcard *.c)
 OBJECTS=$(addprefix $(OBJECTS_DIR)/, $(notdir $(SOURCES:.c=.o)))
 
-CFLAGS+=-I./ -g
-LDFLAGS=
+CFLAGS+=-I./ -Ilibs/ -g
+LDFLAGS=-L$(LIBS_DIR) -llist
 
 all: build_dir $(EXECUTABLE)
 
